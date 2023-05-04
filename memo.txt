@@ -1,3 +1,0 @@
- npx create-react-app react-pokemon-api
- 
- 

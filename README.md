@@ -1,22 +1,17 @@
 # react-pokemon-api
-React＋PokeAPIで「ポケモン図鑑」
+reactでポケモンAPI
 
 ## 環境
-- OS：Windows 11 Pro 22H2
-- Node: v18.15.0
-- npm: 9.5.0
-- React: 18.2.0
+- Windows 11 Pro 22H2
+- node: 18.15.0
 
-## 利用するコマンド
-```bash
-# React環境を新規作成
-> npx create-react-app react-pokemon-api
+## react準備、実行
+```
+# プロジェクト作成 
+>  npx create-react-app react-pokemon-api
 
-# package.jsonに従って内容をおインストール
-> npm install
-
-# Webサーバ起動
-> npm start
+# プロジェクト実行
+>  npx start
 ```
 
 ## 参考サイト
