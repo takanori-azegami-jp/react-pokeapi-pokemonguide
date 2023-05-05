@@ -17,3 +17,4 @@ reactでポケモンAPI
 ## 参考サイト
 - [PokéAPI](https://pokeapi.co/)
 - [【Reactアプリ開発】3種類のReactアプリケーションを構築して、Reactの理解をさらに深めるステップアップ講座](https://www.udemy.com/course/react-3project-app-udemy/)
+- [styled-componentsの使い方(パッとわかりやすく、色々なパターンを説明することを目指す記事)](https://gist.github.com/kenmori/60bf7b67819061f41ce960617c035955)
