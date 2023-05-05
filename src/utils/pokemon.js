@@ -1,3 +1,4 @@
+// PokemonAPIの取得
 export const getallPokemon = (url) => {
 	return new Promise((resolve, reject) => {
 		fetch(url)
@@ -6,6 +7,7 @@ export const getallPokemon = (url) => {
 	});
 };
 
+// pokemonデータの取得
 export const getPokemon = (url) => {
 	return new Promise((resolve, reject) => {
 		fetch(url)

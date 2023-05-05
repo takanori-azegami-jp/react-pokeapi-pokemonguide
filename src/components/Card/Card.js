@@ -1,6 +1,7 @@
 import React from 'react'
 import "./Card.css";
 
+// pokemonカード明細
 const Card = ({ pokemon }) => {
 	return(
 		<div className="card">
