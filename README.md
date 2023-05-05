@@ -5,13 +5,13 @@ reactでポケモンAPI
 - Windows 11 Pro 22H2
 - node: 18.15.0
 
-## react準備、実行
+## プロジェクト作成、実行
 ```
 # プロジェクト作成 
 >  npx create-react-app react-pokemon-api
 
 # プロジェクト実行
->  npx start
+>  npm start
 ```
 
 ## 参考サイト
