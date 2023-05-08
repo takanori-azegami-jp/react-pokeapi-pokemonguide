@@ -1,3 +1,4 @@
+/*
 nav {
   background-color: white;
   color: darkgray;
@@ -7,6 +8,20 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0;
+}
+*/
+
+nav {
+  background-color: white;
+  color: darkgray;
+  font-weight: 600;
+  font-size: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  flex-direction: column;
 }
 
 nav a {
