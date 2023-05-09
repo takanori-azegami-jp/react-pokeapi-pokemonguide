@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import './App.css';
-import { getallPokemon, getPokemon } from './utils/pokemon.jsx';
+import { getallPokemon, getPokemon, getPokemonJson } from './utils/pokemon.jsx';
 import Card from './components/Card/Card';
 import Navbar from './components/Navbar/Navbar';
 import styled from 'styled-components';
@@ -12,6 +12,9 @@ function App() {
   const [pokemonData, setPokemonData] = useState([]);
   const [nextURL, setNextURL] = useState('');
   const [prevURL, setPrevURL] = useState('');
+  const pokemonJsonURL =
+    'https://gist.githubusercontent.com/takanori-azegami-jp/ba58fa91142639b6046704ef4fb52a83/raw/0ea137397f9701828ecd7da7d253168678646488/pokemon.json';
+  const [pokemonJson, setPokemonJson] = useState([]);
 
   // レスポンシブ
   const PokemonCardCon = styled.div`
@@ -30,14 +33,16 @@ function App() {
     }
   `;
 
-  // レンダリングごとの処理
+  // レンダリング時の処理
   useEffect(() => {
     const fetchPokemonData = async () => {
+      // ポケモン日本語名データを取得
+      let pokemonJson = await getPokemonJson(pokemonJsonURL);
+      setPokemonJson(pokemonJson);
+
       //全てのポケモンデータを取得
       let res = await getallPokemon(initialURL);
       await loadPokemon(res.results);
-      // console.log(res.next);
-      // console.log(res.previous);
       setNextURL(res.next);
       setPrevURL(res.previous); //null
       setLoading(false);
@@ -49,20 +54,19 @@ function App() {
   const loadPokemon = async (data) => {
     let _pokemonData = await Promise.all(
       data.map((pokemon) => {
-        // console.log(pokemon);
         let pokemonRecord = getPokemon(pokemon.url);
         return pokemonRecord;
       })
     );
     setPokemonData(_pokemonData);
   };
-  // console.log(pokemonData);
 
   // 次のページを読み込み
   const handleNextPage = async () => {
+    if (!nextURL) return; // nullなら何もしない
+
     setLoading(true);
     let data = await getallPokemon(nextURL);
-    // console.log(data);
     await loadPokemon(data.results);
     setNextURL(data.next);
     setPrevURL(data.previous);
@@ -75,7 +79,6 @@ function App() {
 
     setLoading(true);
     let data = await getallPokemon(prevURL);
-    // console.log(data);
     await loadPokemon(data.results);
     setPrevURL(data.next);
     setPrevURL(data.previous);
@@ -94,7 +97,9 @@ function App() {
             <div>
               <PokemonCardCon>
                 {pokemonData.map((pokemon, i) => {
-                  return <Card key={i} pokemon={pokemon} />;
+                  return (
+                    <Card key={i} pokemon={pokemon} pokemonJson={pokemonJson} />
+                  );
                 })}
               </PokemonCardCon>
             </div>
