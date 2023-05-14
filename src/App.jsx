@@ -4,7 +4,6 @@ import { getallPokemon, getPokemon, getPokemonJson } from './utils/pokemon.jsx';
 import Card from './components/Card/Card';
 import Navbar from './components/Navbar/Navbar';
 import Loading from './components/Loading/Loading';
-import styled from 'styled-components';
 
 // Appメイン
 function App() {
@@ -16,23 +15,6 @@ function App() {
   const pokemonJsonURL =
     'https://gist.githubusercontent.com/takanori-azegami-jp/ba58fa91142639b6046704ef4fb52a83/raw/0ea137397f9701828ecd7da7d253168678646488/pokemon.json';
   const [pokemonJson, setPokemonJson] = useState([]);
-
-  // レスポンシブ
-  const PokemonCardCon = styled.div`
-    // 798pxより大きい場合
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    place-items: center;
-    gap: 20px;
-    margin-top: 20px;
-    // 798pxより小さい場合
-    @media (max-width: 768px) {
-      display: grid;
-      grid-template-columns: none;
-      width: 100%;
-      place-items: center;
-    }
-  `;
 
   // レンダリング時の処理
   useEffect(() => {
@@ -95,14 +77,12 @@ function App() {
           <Loading />
         ) : (
           <>
-            <div>
-              <PokemonCardCon>
-                {pokemonData.map((pokemon, i) => {
-                  return (
-                    <Card key={i} pokemon={pokemon} pokemonJson={pokemonJson} />
-                  );
-                })}
-              </PokemonCardCon>
+            <div className="pokemonCardContainer">
+              {pokemonData.map((pokemon, i) => {
+                return (
+                  <Card key={i} pokemon={pokemon} pokemonJson={pokemonJson} />
+                );
+              })}
             </div>
             <div className="btn">
               <button onClick={handlePrevPage}>前へ</button>
