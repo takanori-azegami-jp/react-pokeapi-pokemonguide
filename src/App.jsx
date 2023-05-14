@@ -3,6 +3,7 @@ import './App.css';
 import { getallPokemon, getPokemon, getPokemonJson } from './utils/pokemon.jsx';
 import Card from './components/Card/Card';
 import Navbar from './components/Navbar/Navbar';
+import Loading from './components/Loading/Loading';
 import styled from 'styled-components';
 
 // Appメイン
@@ -91,7 +92,7 @@ function App() {
       <Navbar />
       <div className="App">
         {loading ? (
-          <h1>ロード中・・・</h1>
+          <Loading />
         ) : (
           <>
             <div>
